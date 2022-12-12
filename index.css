@@ -1,0 +1,79 @@
+/* p {font-family: 'Roboto', sans-serif; }
+li {font-family: 'Roboto', sans-serif; }
+ol {font-family: 'Roboto', sans-serif; }
+h2 {font-family: 'Roboto', sans-serif;}
+h1 {font-family: Roboto; }
+h4 {font-family: 'Roboto', sans-serif;} */
+
+.container{
+    /* display: flex;
+    flex: 1;
+    overflow: auto;
+    flex-direction: row; */
+    position: relative;
+    padding: 0px;
+    width: 100%;
+  }
+
+.project-descrip {
+    display: flex;
+    justify-content: center;
+  }
+
+.heading{
+  color:black;
+  font-size:30px;
+}
+
+.container{
+  display: flex;
+  flex: 1;
+  overflow: auto;
+  flex-direction: row;
+  position: relative;
+  padding: 15px;
+
+}
+
+.body-text{
+  padding-right: 100px;
+  padding-left: 100px;
+}
+
+.heading-text{
+  display: flex;
+  flex: 1;
+  overflow: auto;
+  flex-direction: row;
+  position: relative;
+  padding: 15px;
+}
+
+.zoom{
+  transition: transform .5s;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.1);
+}
+
+.website-buttons{
+  display: flex;
+  justify-content: center;
+}
+
+.button-image{
+  padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+  
+  

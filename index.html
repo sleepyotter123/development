@@ -1,0 +1,135 @@
+<!-- I referenced code from the following website: https://jessieyli.com/microwave-personas.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>React</title>
+    
+    <!-- import javascript variables and functions -->
+    <script src="app.js" defer></script>
+    <!-- import CSS styles -->
+    <link rel="stylesheet" href="index.css" /> 
+
+</head>
+
+  <body>
+    <div id="navigation-bar" class="container-fluid navbar-light">
+      <nav class="navbar navbar-expand-md justify-content-between" >
+        <a class="navbar-brand" href="https://sleepyotter123.github.io/final-portfolio/"><h3><b>Sleepy Otter</b></h3></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#section-options"
+          >
+            <span class="navbar-toggler-icon justify-content-between"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-between" id="section-options" float="right">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+            </ul>
+          </div>
+      </nav>
+    </div>
+
+    <div class="container-fluid">
+      <div id="project-descrip" class="body-text">
+
+        <h1 class="heading">Serendipity Sweets Shop</h1>
+        <h4 style="font-size: 20px"> <em>
+          Practice React by implementing an interactive shopping website. 
+        </em> </h4>
+        <p>
+          In this project, I will be using React to design an interactive shopping website for a sweets shop. The user will have options to filter products by two different types, and sort the products by price. Adding items to a cart will create a subtotal to prepare the user for checkout. 
+        </p>
+
+        <div class="website-buttons">
+          <div class="col-md-8">
+            <a href="https://sleepyotter123.github.io/develop/">
+              <div class="button-image">
+                <div class="zoom">
+                  <img src="assets/react-website.png" class="img-fluid" width="600px"/>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+
+        <h2>Goal of Application</h2>
+        <p>
+            <em>Goal: </em> Allow users to sort through bakery products prior to adding the items to their cart. Users can
+        </p>    
+        <ol>
+            <li>browse through a different combination of filters varying from warm or cold, desserts or beverages</li>
+            <li>sort the products by price to help streamline their decision process, before adding intended items for purchase into the cart</li>
+        </ol>
+        <p>
+            <em>Value: </em> provide an easy interface for users to filter and sort through bakery products.
+        </p>
+
+        <h2>Usability Principles Considered</h2>
+        <p>
+            Throughout the design of the app, I considered design principles that would <b>most effectively</b> convey information about my bakery to the users. 
+            <ul>
+              <li>There are <b>two filter options</b> to allow users to sort through products in a way that makes most sense- by temperature (warm or cold) and type of product (dessert or beverage). </li>
+              <li>There are <b>two sorting options</b> that allow users to sort by either increasing or decreasing price. I found this to be the most logical way to sort products associated with numbers. </li>
+              <li>The <b>cart on the righthand side</b> allows users to easily interact with products they plan to purchase. Items can be added to cart directly from the item catalog, and can be removed directly from the cart. There is a <b>reset button</b> that allows users reset to am empty cart with only one click</li>
+              <li>Users first read the title and description of the bakery, then are presented with filter and sort options. Users <b>read the website from left to right</b>, so they see the items first and then their options in the cart.</li>
+            </ul>
+          </p>
+
+        <h2>Organization of Components</h2>
+        <p>
+            My React app uses two components: BakeryItem and CartItem. 
+            <ul>
+                <li><b>BakeryItem </b>represents each individual bakery product listed in the website catalog. The items are organized in a list, and each individual component contains information about the product name, image, temperature, type, and price. Finally, there is an option for users to add the item to the cart. </li>
+                <li><b>CartItem </b> represents the component for each individual item after it has been added to the cart. An item is only displayed in the cart after the user clicks the "Add to Cart" button. Additionally, items only remain in the cart if there is at least one of that item. Each CartItem component contains the item's name, price, count describing number of products in the cart, and interactive buttons for incrementing and decrementing the count.</li>
+            </ul>
+        </p>
+
+        <!-- <h2>How Data is Passed Through Components</h2>
+        <p>All the information for each bakery item is contained in a JSON file. The file contains a list, and each bakery item is represented as an object. This enables unique information for each item regarding its name, price, image, temperature, and type. This information is passed into a BakeryItem component, which displays each individual item in a grid on the webpage. The information from this BakeryItem component is passed through the filter and sort functions, which enables layering of various filters and sorting techniques. Finally, the data from the BakeryItem component is also passed into the CartItem component, is displayed as a vertial grid on the right hand side of the webpage. The CartItem component is able to access all product informatino from BakeryData.</p>
+        
+        <h2>How the User Triggers State Changes</h2>
+        <h4>Filtering</h4>
+        <p>
+            I have two states that deal with the two separate filters, named "type" and "type2". The "type" constant holds the filtered products based on temperature. The default state is "All", indicating that there is no temperature filter on the bakery items. The "type2" constant holds all the filtered products based on type (either dessert or beverage). Similarly, the default state is "All", indicating that there is no type filter on the bakery items. Both constants are updated by the computedArrayFilteredAndSorted function. The user can interact with the navigation bar to implement these filters.
+        </p>
+        <h4>Sorting</h4>
+        <p>
+            I have two states that deal with sorting in the program. The "sortStatus" constant holds information on whether or not the bakeryData should be sorted by price. The default state is false, and changes to true when the user selects a sorting option. The "sortStatus" constant holds information on the type of sort that should be performed. When the user selects "Sort Price Low to High", the sort type is changed to "Ascending", which then passes through the "sortFunctionAscending" function. This function is called in "computedArrayFilteredandSorted" function, which sorts the item by price in ascending order. This same process occurs for when the sort type is set to "Descending", except the price would be sorted from high to low.
+        </p>
+        <h4>Cart</h4>
+        <p>
+            I have one state that deals with adding items to the cart, named "cart". This constant holds the items in a list in the form of a tuple. The two pieces of information in this tuple are the count for how many of this item is in the cart, and the price of the item. When a user clicks "Add to Cart", that bakery item is added to this cart constant. There are mulitiple functions that modify the cart constant, including "updateCart", "addItem", "removeItem", and "resetCart".
+        </p>
+        <h4>Aggregator</h4>
+        <p>
+            I have one state that deals with the running total price of the cart, named "totalPrice". The initial state of this constant is 0, because the total price of the cart is zero when nothing has been added to it. When a user clicks the "Add to Cart" button, this constant is updated with the price of that item. Additionally, this constant is modified when a user decrements or increments the count of the number of an item in the cart. This constant is continuously updated and keeps track of the aggregated cost of the cart.
+        </p> -->
+
+        <h2>Conclusion</h2>
+        <p>
+            This project taught me the basis of React. I learned how to identify the <b>goal of a website</b>, and how to center a design around that goal. The applications of creating a shopping website are not significant, but it is important to understand how componenets are used with each other prior to implementing larger applications. 
+        </p>
+        <p>
+            Though my website does not have a fully implemented checkout functionality, I learned how to undestand component hierarchy. In the future, I am looking to develop websites with react that are capable of handling larger amounts of data. If used correctly, React is an extremely powerful tool and can 
+        </p>
+        
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+
